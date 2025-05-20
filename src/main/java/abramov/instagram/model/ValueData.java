@@ -1,7 +1,6 @@
 package abramov.instagram.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ValueData {
@@ -20,13 +19,13 @@ public class ValueData {
         return value;
     }
 
-    public String getHref() {
-        return href;
-    }
-
     public void setValue(String value) {
         this.value = value;
         this.href = "https://www.instagram.com/" + value;
+    }
+
+    public String getHref() {
+        return href;
     }
 
     public void setHref(String href) {
