@@ -21,21 +21,20 @@ public class InstagramService {
 
     public NonMutualResult findNonMutual(MultipartFile followersFile,
                                          MultipartFile followingFile) throws IOException {
-        // 1) Получаем списки InstagramData из обоих файлов
         List<InstagramData> followersList = extractDataList(followersFile);
         List<InstagramData> followingList = extractDataList(followingFile);
 
-        // 2) Извлекаем множества имён
         Set<String> followers = extractNames(followersList);
         Set<String> following = extractNames(followingList);
 
-        // 3) Считаем не-взаимные
-        List<String> notFollowingBack = following.stream()
+        List<ValueData> notFollowingBack = following.stream()
                 .filter(u -> !followers.contains(u))
+                .map(ValueData::new)
                 .collect(Collectors.toList());
 
-        List<String> notFollowedByYou = followers.stream()
+        List<ValueData> notFollowedByYou = followers.stream()
                 .filter(u -> !following.contains(u))
+                .map(ValueData::new)
                 .collect(Collectors.toList());
 
         return new NonMutualResult(notFollowingBack, notFollowedByYou);
