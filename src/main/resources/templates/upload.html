@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка Instagram JSON</title>
+</head>
+<body>
+<h2>Загрузите файлы Instagram (followers и following)</h2>
+<form action="/process" enctype="multipart/form-data" method="POST">
+    <label>Followers JSON:</label>
+    <input accept=".json" name="followersFile" required type="file"/><br/><br/>
+    <label>Following JSON:</label>
+    <input accept=".json" name="followingFile" required type="file"/><br/><br/>
+    <input type="submit" value="Отправить"/>
+</form>
+</body>
+</html>
